@@ -1,6 +1,9 @@
 /node_modules
 /dist
 
+/demo/*/node_modules
+/demo/*/dist
+
 .DS_Store
 .env.local
 .env.development.local
