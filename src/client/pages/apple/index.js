@@ -2,7 +2,11 @@ import React from 'react';
 
 const Index = () => {
   return (
-    <div>page: Apple</div>
+    <div>
+      <div>page: Apple</div>
+      <img src={require('./small-img.png')} />
+      <img src={require('./big-img.png')} />
+    </div>
   )
 };
 

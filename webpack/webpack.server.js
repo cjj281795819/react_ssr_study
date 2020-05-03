@@ -22,6 +22,16 @@ module.exports = {
       test: /.jsx?$/,
       use: 'babel-loader',
       exclude: /node_modules/
+    }, {
+      test: /.(jpg|jpeg|png)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          name: 'img/[name].[hash:7].[ext]',
+          esModule: false
+        }
+      }
     }]
   },
   resolve: {

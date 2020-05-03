@@ -16,6 +16,16 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: [MiniCssExtractPlugin.loader, 'css-loader']
+    }, {
+      test: /\.(jpg|png|jpeg)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          name: 'img/[name].[hash:7].[ext]',
+          esModule: false
+        }
+      }]
     }]
   },
   optimization: {
