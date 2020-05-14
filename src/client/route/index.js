@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import Header from './header';
-import routeConfig from './route.config';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-const App = ({ pathname, initialData }) => {
+const App = ({ pathname, initialData, routeConfig }) => {
   return (
     <Fragment>
       <Header />

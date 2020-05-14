@@ -1,4 +1,5 @@
-import { Apple, Banana, Orange, Fruit } from '../pages';
+import Fruit from '../pages/fruit/index';
+import asyncComp from '../common/asyncComp';
 
 export default [{
   component: Fruit,
@@ -6,17 +7,17 @@ export default [{
   exact: true,
   name: 'Fruits'
 }, {
-  component: Apple,
+  component: asyncComp(() => import('../pages/apple/index')),
   path: '/apple',
   exact: true,
   name: 'Apple'
 }, {
-  component: Banana,
+  component: asyncComp(() => import('../pages/banana/index')),
   path: '/banana',
   exact: true,
   name: 'Banana'
 }, {
-  component: Orange,
+  component: asyncComp(() => import('../pages/orange/index')),
   path: '/orange',
   exact: true,
   name: 'Orange'

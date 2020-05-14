@@ -1,4 +1,3 @@
-
 export const handleHtml = ({ reactStr, initialData, styles }) => {
   const jsKeys = ['libs.js', 'main.js'];
   const cssKeys = ['main.css'];
@@ -30,4 +29,22 @@ export const handleHtml = ({ reactStr, initialData, styles }) => {
   </body>
   ${jsValues.map(v => `<script type="text/javascript" src="${v}"></script>`).join('')}
   </html>`
-}
+};
+
+export const getStaticRoute = async (asyncRoute) => {
+  const staitcRoute = [];
+  const len = asyncRoute.length;
+
+  for (let i = 0; i < len; i++) {
+    const item = asyncRoute[i];
+    staitcRoute.push({
+      ...item
+    });
+    if (item.component._load) {
+      const component = (await item.component._load()).default;
+      staitcRoute[staitcRoute.length - 1].component = component;
+    }
+  };
+
+  return staitcRoute;
+};

@@ -4,8 +4,13 @@ import routeConfig from '../../client/route/route.config';
 import { matchRoutes } from 'react-router-config';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
-import { handleHtml } from '../util';
+import { handleHtml, getStaticRoute } from '../util';
 //import { ServerStyleSheet } from 'styled-components';
+
+let staticRoute = [];
+(async () => {
+  staticRoute = await getStaticRoute(routeConfig);
+})();
 
 export default async (req, res, next) => {
   const { path, url } = req;
@@ -14,9 +19,7 @@ export default async (req, res, next) => {
     return;
   }
 
-  console.log(url)
-
-  const branch = matchRoutes(routeConfig, path)[0];
+  const branch = matchRoutes(staticRoute, path)[0];
   let component = {};
 
   if (branch) {
@@ -45,7 +48,7 @@ export default async (req, res, next) => {
 
   const reactStr = renderToString(
     <StaticRouter location={path} context={context}>
-      <App />
+      <App routeConfig={staticRoute} />
     </StaticRouter>
   );
 
