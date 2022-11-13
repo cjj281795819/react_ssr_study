@@ -32,7 +32,7 @@
     "nodemon": "^2.0.3",
     "styled-components": "^5.1.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   }
